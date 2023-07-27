@@ -5,3 +5,5 @@
 </div>
 
 O objetivo do projeto é criar um chat-bot 🤖 explorando a biblioteca TensorFlow!
+
+Para testes: `http://localhost:3000/api/bot/mensagem aqui`

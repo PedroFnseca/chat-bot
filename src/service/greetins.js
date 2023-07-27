@@ -77,6 +77,4 @@ async function chatbotGreetins(userMessage) {
   }
 }
 
-export {
-  chatbotGreetins
-}
+export default chatbotGreetins;

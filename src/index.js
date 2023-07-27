@@ -2,6 +2,7 @@ import express from "express";
 import logger from "./utils/logger.js";
 import routes from "./routes.js";
 import { config } from "dotenv";
+import "./whatsappClient/message.js";
 
 config();
 

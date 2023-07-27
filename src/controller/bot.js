@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { chatbotGreetins } from "../service/greetins.js";
+import chatbotGreetins from "../service/greetins.js";
 
 const bot = Router();
 

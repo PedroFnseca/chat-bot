@@ -14,19 +14,22 @@ client.on('message', async (message) => {
     const userData = await message.caption;
     const chat = await message.getChat();
 
-    try{
+    try {
         console.log("mensagem: ", message.body);
         const response = await chatbotGreetins(message.body);
         console.log("resposta: ", response);
 
-        if(message.author == 'Pedrow')
-        {
+        if (message.author == 'Pedrow') {
             await message.reply(response);
-        }else if(chat.name   == 'União Kwaipee express'){
+        } else if
+            (
+            chat.name == 'União Kwaipee express' &&
+            chat.getContact().name == 'Pedrow' ||
+            chat.getContact().isMe()
+        ) {
             await message.reply(response);
         }
-    }catch(error)
-    {
+    } catch (error) {
         console.log(error);
     }
 });

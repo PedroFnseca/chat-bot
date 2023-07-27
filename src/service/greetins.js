@@ -29,7 +29,8 @@ function getArrayFromTensor(tensor) {
 // Example of how to use the model to find the response
 async function chatbotGreetins(userMessage) {
   const userMessageEmbedding = await getEmbedding([userMessage]);
-  const greetings = ['Olá', 'Oi', 'E aí'];
+  const greetings = ['Olá', 'Oi', 'E aí', 'Tudo bem?', 'Como vai?', 'Bom dia', 'Boa tarde', 'Boa noite', 'salve', 'beleza'];
+  const sensitivity = 0.65;
   
   const similarityScores = [];
   for (const greeting of greetings) {
@@ -41,12 +42,38 @@ async function chatbotGreetins(userMessage) {
     similarityScores.push(score);
   }
 
-  const maxScoreIndex = similarityScores.indexOf(Math.max(...similarityScores));
-  
-  if (maxScoreIndex !== -1) {
-    return 'Olá! Como posso ajudar?';
+  const maxScore = Math.max(...similarityScores)
+
+  console.table({
+    'User Message': userMessage,
+    'Max Score': maxScore,
+    'Sensitivity': sensitivity
+  })
+
+  if (maxScore > sensitivity) {
+    const possibleResponses = [
+      'Olá! Como posso ajudar?',
+      'Oi! Como posso ajudar?',
+      'E aí! Como posso ajudar?',
+      'Tudo bem? Como posso ajudar?',
+      'Como vai? Como posso ajudar?',
+      'Bom dia! Como posso ajudar?',
+      'Boa tarde! Como posso ajudar?',
+      'Boa noite! Como posso ajudar?',
+      'Salve! Como posso ajudar?',
+      'Beleza! Como posso ajudar?'
+    ];
+
+    return possibleResponses[Math.floor(Math.random() * possibleResponses.length)];
   } else {
-    return 'Desculpe, não entendi o que você disse.';
+    const possibleResponses = [
+      'Desculpe, não entendi o que você disse.',
+      'Não entendi, poderia repetir?',
+      'Não entendi, poderia falar de outra forma?',
+      'Não entendi, poderia falar de outra maneira?',
+    ];
+
+    return possibleResponses[Math.floor(Math.random() * possibleResponses.length)];
   }
 }
 

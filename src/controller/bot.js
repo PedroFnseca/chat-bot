@@ -3,8 +3,8 @@ import { chatbotGreetins } from "../service/greetins.js";
 
 const bot = Router();
 
-bot.get("/", async (req, res) => {
-  const { message } = req.query;
+bot.get("/:message", async (req, res) => {
+  const { message } = req.params;
 
   if (!message) {
     res.status(400).json({
@@ -14,11 +14,6 @@ bot.get("/", async (req, res) => {
 
   try {
     const response = await chatbotGreetins(message);
-
-    console.table({
-      message,
-      response,
-    })
     
     res.status(200).json({
       message: response,

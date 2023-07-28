@@ -30,7 +30,7 @@ function getArrayFromTensor(tensor) {
 async function chatbotGreetins(userMessage) {
   const userMessageEmbedding = await getEmbedding([userMessage]);
   const greetings = ['Olá', 'Oi', 'E aí', 'Tudo bem?', 'Como vai?', 'Bom dia', 'Boa tarde', 'Boa noite', 'salve', 'beleza'];
-  const sensitivity = 0.65;
+  const sensitivity = 0.8;
   
   const similarityScores = [];
   for (const greeting of greetings) {

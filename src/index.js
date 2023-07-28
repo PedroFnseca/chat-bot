@@ -2,7 +2,6 @@ import express from "express";
 import logger from "logger-endpoints-api";
 import routes from "./routes.js";
 import { config } from "dotenv";
-import "./whatsappClient/message.js";
 
 config();
 

@@ -4,8 +4,7 @@ import qrCode from 'qrcode-terminal';
 const client = new Client();
 
 client.on('qr', (qr) => {
-    //QR
-    console.log(qr);
+    //Generate QR code and print on console
     qrCode.generate(qr, { small: true });
 });
 
